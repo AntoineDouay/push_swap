@@ -6,16 +6,16 @@
 /*   By: adouay <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 02:51:23 by adouay            #+#    #+#             */
-/*   Updated: 2022/07/19 16:37:19 by adouay           ###   ########.fr       */
+/*   Updated: 2022/09/30 14:40:07 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_stack **stack)
+void	swap(t_stack **stack, char c)
 {
-	//if (stack == NULL|| stack->next == NULL)
-	//	return ;
+	if ((*stack) == NULL|| (*stack)->next == NULL)
+		return ;
 	t_stack	*tmp;
 
 	tmp = (*stack)->next;
@@ -23,27 +23,51 @@ void	swap(t_stack **stack)
 	tmp->next = (*stack);
 	(*stack) = tmp;
 
-
-	//tmp.n = stack->n;
-	//tmp.index = stack->index;
-
-	//stack->n = stack->next->n;
-//	stack->index = stack->next->index;
-
-//	stack->next->n = tmp.n;
-//	stack->next->index = tmp.index;
+	write(1, "s", 1);
+	write(1, &c, 1);
+	write(1, "\n", 1);
 }
-/*
-void	swapswap(t_stack *stack, t_stack *stack1)
+
+void	push(t_stack **from, t_stack **to, char c)
 {
-	swap(from);
-	swap(to);
+	t_stack	*tmp;
+
+	tmp = (*from);
+	(*from) = (*from)->next;
+	tmp->next = (*to);
+	(*to) = tmp;
+
+	write(1, "p", 1);
+	write(1, &c, 1);
+	write(1, "\n", 1);
 }
 
-void	push(t_stack **from, t_stack **to)
+void	rotate(t_stack **stack, char c)
 {
+	t_stack *tmp;
+	t_stack	*last;
 
+	last = ft_lstlast((*stack));
+	tmp = (*stack);
+	last->next = tmp;
+	(*stack) = (*stack)->next;
+	tmp->next = NULL;
+	write(1, "r", 1);
+	write(1, &c, 1);
+	write(1, "\n", 1);
 }
 
-void	rotate()
-*/
+void	rev_rotate(t_stack **stack, char c)
+{
+	t_stack	*last;
+	t_stack	*second_last;
+
+	last = ft_lstlast((*stack));
+	second_last = ft_lstsecondlast((*stack));
+	last->next = (*stack);
+	(*stack) = last;
+	second_last->next = NULL;
+	write(1, "rr", 2);
+	write(1, &c, 1);
+	write(1, "\n", 1);
+}
