@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/19 01:16:03 by adouay            #+#    #+#             */
-/*   Updated: 2022/10/13 15:27:09 by adouay           ###   ########.fr       */
+/*   Created: 2022/05/06 12:01:32 by adouay            #+#    #+#             */
+/*   Updated: 2022/10/12 14:56:38 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	free_stack(t_stack *head)
+int	ft_lstsize(t_stack *lst)
 {
-	t_stack	*tmp;
+	int		i;
+	t_stack	*current;
 
-	while (head != NULL)
+	current = lst;
+	i = 0;
+	while (current != NULL)
 	{
-		tmp = head;
-		head = head->next;
-		free (tmp);
+		current = current->next;
+		i++;
 	}
-}
-
-int	error_exit(t_stack *a)
-{
-	free_stack(a);
-	write(2, "Error\n", 6);
-	return (1);
+	return (i);
 }

@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adouay <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/19 01:16:03 by adouay            #+#    #+#             */
-/*   Updated: 2022/10/13 15:27:09 by adouay           ###   ########.fr       */
+/*   Created: 2022/05/03 20:51:11 by adouay            #+#    #+#             */
+/*   Updated: 2022/05/04 11:41:48 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	free_stack(t_stack *head)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	t_stack	*tmp;
+	char	*p;
+	size_t	i;
 
-	while (head != NULL)
+	p = (char *)s;
+	i = 0;
+	while (i < n)
 	{
-		tmp = head;
-		head = head->next;
-		free (tmp);
+		p[i] = (char)c;
+		i++;
 	}
-}
-
-int	error_exit(t_stack *a)
-{
-	free_stack(a);
-	write(2, "Error\n", 6);
-	return (1);
+	return (s);
 }

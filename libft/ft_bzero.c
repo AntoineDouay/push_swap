@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adouay <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/18 22:42:43 by adouay            #+#    #+#             */
-/*   Updated: 2022/10/03 14:27:11 by adouay           ###   ########.fr       */
+/*   Created: 2022/05/03 22:20:43 by adouay            #+#    #+#             */
+/*   Updated: 2022/05/05 00:38:00 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-long long int	ft_atoi(const char *nptr)
+void	ft_bzero(void *s, size_t n)
 {
-	int				sign;
-	long long int	res;
+	char	*p;
+	size_t	i;
 
-	sign = 1;
-	res = 0;
-	while (*nptr == ' ' || (*nptr >= 9 && *nptr <= 13))
-	nptr++;
-	if (*nptr == '-' || *nptr == '+')
+	p = (char *)s;
+	i = 0;
+	while (i < n)
 	{
-		if (*nptr++ == '-')
-			sign = -sign;
+		p[i] = '\0';
+		i++;
 	}
-	while (*nptr >= '0' && *nptr <= '9')
-	{
-		res = res * 10 + (*nptr - 48);
-		nptr++;
-	}
-	return (sign * res);
+	return ;
 }

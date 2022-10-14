@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   action.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adouay <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 02:51:23 by adouay            #+#    #+#             */
-/*   Updated: 2022/09/30 14:40:07 by adouay           ###   ########.fr       */
+/*   Updated: 2022/10/13 15:42:17 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 
 void	swap(t_stack **stack, char c)
 {
-	if ((*stack) == NULL|| (*stack)->next == NULL)
-		return ;
 	t_stack	*tmp;
 
+	if ((*stack) == NULL || (*stack)->next == NULL)
+		return ;
 	tmp = (*stack)->next;
 	(*stack)->next = tmp->next;
 	tmp->next = (*stack);
 	(*stack) = tmp;
-
 	write(1, "s", 1);
 	write(1, &c, 1);
 	write(1, "\n", 1);
@@ -36,7 +35,6 @@ void	push(t_stack **from, t_stack **to, char c)
 	(*from) = (*from)->next;
 	tmp->next = (*to);
 	(*to) = tmp;
-
 	write(1, "p", 1);
 	write(1, &c, 1);
 	write(1, "\n", 1);
@@ -44,13 +42,13 @@ void	push(t_stack **from, t_stack **to, char c)
 
 void	rotate(t_stack **stack, char c)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 	t_stack	*last;
 
-	last = ft_lstlast((*stack));
+	last = ft_lstlast(*stack);
 	tmp = (*stack);
-	last->next = tmp;
 	(*stack) = (*stack)->next;
+	last->next = tmp;
 	tmp->next = NULL;
 	write(1, "r", 1);
 	write(1, &c, 1);

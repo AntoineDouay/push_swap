@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adouay <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/19 01:16:03 by adouay            #+#    #+#             */
-/*   Updated: 2022/10/13 15:27:09 by adouay           ###   ########.fr       */
+/*   Created: 2022/05/04 17:15:03 by adouay            #+#    #+#             */
+/*   Updated: 2022/05/04 17:15:40 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	free_stack(t_stack *head)
+size_t	ft_strlen(const char *s)
 {
-	t_stack	*tmp;
+	size_t	n;
 
-	while (head != NULL)
-	{
-		tmp = head;
-		head = head->next;
-		free (tmp);
-	}
-}
-
-int	error_exit(t_stack *a)
-{
-	free_stack(a);
-	write(2, "Error\n", 6);
-	return (1);
+	n = 0;
+	while (s[n])
+		n++;
+	return (n);
 }

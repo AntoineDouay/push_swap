@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/19 01:16:03 by adouay            #+#    #+#             */
-/*   Updated: 2022/10/13 15:27:09 by adouay           ###   ########.fr       */
+/*   Created: 2022/05/06 12:00:58 by adouay            #+#    #+#             */
+/*   Updated: 2022/10/12 14:54:57 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	free_stack(t_stack *head)
+void	ft_lstadd_front(t_stack **lst, t_stack *new)
 {
-	t_stack	*tmp;
-
-	while (head != NULL)
+	if (lst && new)
 	{
-		tmp = head;
-		head = head->next;
-		free (tmp);
+		new->next = *lst;
+		*lst = new;
 	}
-}
-
-int	error_exit(t_stack *a)
-{
-	free_stack(a);
-	write(2, "Error\n", 6);
-	return (1);
 }

@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adouay <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/19 01:16:03 by adouay            #+#    #+#             */
-/*   Updated: 2022/10/13 15:27:09 by adouay           ###   ########.fr       */
+/*   Created: 2022/05/03 23:27:21 by adouay            #+#    #+#             */
+/*   Updated: 2022/05/03 23:28:21 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	free_stack(t_stack *head)
+int	ft_isascii(int c)
 {
-	t_stack	*tmp;
-
-	while (head != NULL)
-	{
-		tmp = head;
-		head = head->next;
-		free (tmp);
-	}
-}
-
-int	error_exit(t_stack *a)
-{
-	free_stack(a);
-	write(2, "Error\n", 6);
-	return (1);
+	return (c >= 0 && c <= 127);
 }

@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adouay <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/19 01:16:03 by adouay            #+#    #+#             */
-/*   Updated: 2022/10/13 15:27:09 by adouay           ###   ########.fr       */
+/*   Created: 2022/05/03 22:26:49 by adouay            #+#    #+#             */
+/*   Updated: 2022/05/05 23:33:08 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	free_stack(t_stack *head)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	t_stack	*tmp;
+	void	*p;
 
-	while (head != NULL)
-	{
-		tmp = head;
-		head = head->next;
-		free (tmp);
-	}
-}
-
-int	error_exit(t_stack *a)
-{
-	free_stack(a);
-	write(2, "Error\n", 6);
-	return (1);
+	p = malloc(size * nmemb);
+	if (!p)
+		return (0);
+	ft_bzero(p, size * nmemb);
+	return (p);
 }

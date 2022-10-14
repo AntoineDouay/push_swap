@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
+/*   By: adouay <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/19 01:16:03 by adouay            #+#    #+#             */
-/*   Updated: 2022/10/13 15:27:09 by adouay           ###   ########.fr       */
+/*   Created: 2022/05/04 11:56:58 by adouay            #+#    #+#             */
+/*   Updated: 2022/05/04 12:24:35 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	free_stack(t_stack *head)
+void	ft_putendl_fd(char *s, int fd)
 {
-	t_stack	*tmp;
-
-	while (head != NULL)
-	{
-		tmp = head;
-		head = head->next;
-		free (tmp);
-	}
+	write(fd, s, ft_strlen(s));
+	write(fd, "\n", 1);
 }
-
-int	error_exit(t_stack *a)
+/*
+int main()
 {
-	free_stack(a);
-	write(2, "Error\n", 6);
-	return (1);
+	int fd;
+
+	fd = open("test.txt", O_WRONLY);
+	ft_putendl_fd("salut gars", fd);
+	close(fd);
+	return (0);
 }
+*/

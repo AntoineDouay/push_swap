@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adouay <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: adouay <adouay@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 22:35:58 by adouay            #+#    #+#             */
-/*   Updated: 2022/07/19 02:01:52 by adouay           ###   ########.fr       */
+/*   Updated: 2022/10/13 17:44:34 by adouay           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ int	check_int(char *argv)
 {
 	if (*argv == '-')
 		argv++;
-	while(*argv)
+	if (!*argv)
+		return (1);
+	while (*argv)
 	{
 		if (!(*argv >= '0' && *argv <= '9'))
 			return (1);
@@ -27,14 +29,15 @@ int	check_int(char *argv)
 
 int	check_double(t_stack *a)
 {
-	t_stack *cpy;
+	t_stack	*cpy;
 	int		tmp;
+
 	while (a != NULL)
 	{	
 		tmp = a->n;
 		cpy = a->next;
 		if (!cpy)
-			break;
+			break ;
 		while (cpy != NULL)
 		{
 			if (tmp == cpy->n)
@@ -46,18 +49,18 @@ int	check_double(t_stack *a)
 	return (0);
 }
 
-int	check_args(char **argv)
+int	check_args(char **args)
 {
 	int				i;
 	long long int	tmp;
 
-	i = 1;
+	i = 0;
 	tmp = 0;
-	while (argv[i] != 0)
+	while (args[i] != 0)
 	{
-		if (check_int(argv[i]))
+		if (check_int(args[i]))
 			return (1);
-		tmp = ft_atoi(argv[i]);
+		tmp = ft_atoi(args[i]);
 		if (tmp < INT_MIN || tmp > INT_MAX)
 			return (1);
 		i++;
